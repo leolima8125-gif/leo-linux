@@ -15,7 +15,7 @@ FROM ${BASE_IMAGE}:${BASE_TAG}
 COPY system_files/ /
 
 RUN --mount=type=bind,from=ctx,source=/build_files,target=/ctx \
-    /ctx/build.sh && \
+    bash /ctx/build.sh && \
     ostree container commit
 
 LABEL org.opencontainers.image.title="Leo Linux"
