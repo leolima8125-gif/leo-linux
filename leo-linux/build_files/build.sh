@@ -23,8 +23,6 @@ dnf5 -y install \
 ### 4. Ferramentas de tema (Aero)
 dnf5 -y install kvantum
 
-### 5. Ferramentas de jogos extras (Steam, gamescope e Proton já vêm na base)
-dnf5 -y install gamemode mangohud || true
 
 ### 6. Limpeza
 dnf5 clean all
