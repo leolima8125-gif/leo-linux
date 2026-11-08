@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+# Chamado pelo ícone "Modo Game" da área de trabalho.
+if kdialog --title "Modo Game" --warningyesno \
+  "Isso vai encerrar a sessão atual e abrir o Modo Game (Steam + gamescope).\n\nSalve seu trabalho antes de continuar. Deseja continuar?"; then
+  exec /usr/bin/leo-session gamemode
+fi

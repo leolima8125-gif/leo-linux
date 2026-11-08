@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+# Uso: leo-session gamemode|desktop
+# Define a sessão de login automático e reinicia a tela de login.
+case "${1:-}" in
+  gamemode|desktop)
+    echo "$1" > /var/lib/leo-session/request
+    echo "Trocando para: $1 ..."
+    ;;
+  *)
+    echo "Uso: leo-session gamemode|desktop"
+    exit 1
+    ;;
+esac

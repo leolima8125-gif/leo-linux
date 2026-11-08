@@ -1,0 +1,6 @@
+[Unit]
+Description=Aplica troca de sessao (Leo Linux)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/leo-session-apply

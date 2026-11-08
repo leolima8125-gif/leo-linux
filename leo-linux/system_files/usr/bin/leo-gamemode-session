@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+# Sessão "Modo Game" do Leo Linux: gamescope + Steam em modo Big Picture.
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+export STEAM_MULTIPLE_XWAYLANDS=1
+exec gamescope -e -f -- steam -steamos3 -steampal -steamdeck -gamepadui

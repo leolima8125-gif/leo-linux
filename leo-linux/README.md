@@ -1,25 +1,20 @@
 # Leo Linux
 
-Sistema atômico para jogos baseado em Bazzite (Fedora Atomic).
+Sistema atômico para jogos, baseado no Fedora Kinoite (KDE Plasma oficial do Fedora).
 
-## Como funciona
-- Base: `ghcr.io/ublue-os/bazzite-deck` (kernel, Mesa, Steam, gamescope, modo game).
-- Atualizações por imagem, com rollback no menu de boot (`rpm-ostree rollback`).
-- Extras do Leo Linux: Brave, LibreOffice, Kvantum e tema estilo Aero.
-- O GitHub Actions reconstrói a imagem todo dia para acompanhar a base.
+- Base: `quay.io/fedora/fedora-kinoite` (kernel, Mesa e Plasma do Fedora).
+- Camada própria: Steam, gamescope, GameMode, MangoHud, Brave, LibreOffice, sessões Modo Game/Desktop.
+- Atualização por imagem, com rollback (`rpm-ostree rollback`).
+
+## Modo Game <-> Desktop
+- Na tela de login há duas sessões: "Plasma" e "Leo Linux - Modo Game".
+- `leo-session gamemode` faz o sistema iniciar direto no Modo Game; `leo-session desktop` volta ao desktop.
+- Dentro da Steam, a opção "Mudar para o Desktop" chama o mesmo mecanismo.
+
+## Visual
+- Estilo de widgets e decoração Oxygen, ícones Oxygen e esquemas de cores "Leo Aero" (claro e escuro), com blur do KWin ligado.
+- Alternar claro/escuro: Configurações do Sistema -> Cores e Temas -> Cores.
+- O ícone "Modo Game" fica na área de trabalho (duplo clique).
 
 ## Build local
     podman build -t leo-linux .
-
-## Instalar a partir da imagem (em um Fedora Atomic / Bazzite já instalado)
-    rpm-ostree rebase ostree-unverified-registry:ghcr.io/SEU_USUARIO/leo-linux:stable
-    systemctl reboot
-
-## Modo gamer
-A sessão de jogo (gamescope + Steam) e o alternador "Mudar para o Desktop" /
-"Voltar ao modo Game" já vêm da base bazzite-deck.
-
-## Próximos passos
-1. Colocar os assets do tema em system_files/usr/share/leo-linux/theme.
-2. Gerar uma ISO instalável (bootc-image-builder ou ISO do Universal Blue).
-3. Assinar a imagem (cosign) quando for distribuir.

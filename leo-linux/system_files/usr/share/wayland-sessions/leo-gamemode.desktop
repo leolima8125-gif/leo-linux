@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Leo Linux - Modo Game
+Comment=Steam em tela cheia com gamescope
+Exec=/usr/bin/leo-gamemode-session
+Type=Application
+DesktopNames=gamescope

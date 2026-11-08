@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+# Roda como root (via systemd path unit). Aplica o pedido de troca de sessão.
+set -eu
+REQ=/var/lib/leo-session/request
+[ -e "$REQ" ] || exit 0
+if [ -L "$REQ" ] || [ ! -f "$REQ" ]; then rm -f "$REQ"; exit 0; fi
+
+user="$(stat -c %U "$REQ")"
+want="$(head -c 32 "$REQ" | tr -d '[:space:]')"
+rm -f "$REQ"
+
+uid="$(id -u "$user" 2>/dev/null || echo 0)"
+[ "$uid" -ge 1000 ] || exit 0
+
+case "$want" in
+  gamemode) session=leo-gamemode ;;
+  desktop)  session=plasma ;;
+  *) exit 0 ;;
+esac
+
+mkdir -p /etc/sddm.conf.d
+cat > /etc/sddm.conf.d/zz-leo-autologin.conf <<CONF
+[Autologin]
+User=$user
+Session=$session
+Relogin=true
+CONF
+systemctl restart sddm

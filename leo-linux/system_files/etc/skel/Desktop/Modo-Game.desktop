@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Modo Game
+Comment=Abre o Modo Game (Steam em tela cheia com gamescope)
+Exec=/usr/bin/leo-gamemode-launcher
+Icon=applications-games
+Terminal=false
+Categories=Game;

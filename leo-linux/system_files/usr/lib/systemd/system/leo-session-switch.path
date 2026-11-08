@@ -1,0 +1,8 @@
+[Unit]
+Description=Observa pedidos de troca de sessao (Leo Linux)
+
+[Path]
+PathExists=/var/lib/leo-session/request
+
+[Install]
+WantedBy=multi-user.target

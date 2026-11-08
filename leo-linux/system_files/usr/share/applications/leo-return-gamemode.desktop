@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Voltar ao Modo Game
+Comment=Volta para a sessão de jogo (Steam em tela cheia)
+Exec=/usr/bin/leo-session gamemode
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Game;

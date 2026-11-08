@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+# A Steam chama este comando ("plasma" = ir para o desktop).
+case "${1:-}" in
+  plasma|desktop|plasma-wayland-persistent|plasma-x11-persistent) target=desktop ;;
+  *) target=gamemode ;;
+esac
+steam -shutdown >/dev/null 2>&1 || true
+exec /usr/bin/leo-session "$target"
