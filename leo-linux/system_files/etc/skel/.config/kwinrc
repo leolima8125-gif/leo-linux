@@ -1,0 +1,10 @@
+[Compositing]
+Enabled=true
+Backend=OpenGL
+
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+translucencyEnabled=true
+slidingpopupsEnabled=true
+wobblywindowsEnabled=false

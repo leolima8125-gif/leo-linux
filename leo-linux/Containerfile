@@ -1,0 +1,22 @@
+# Leo Linux - imagem atômica baseada no Bazzite (Fedora Atomic) com modo Steam Deck.
+# A base "bazzite-deck" já traz KDE Plasma, gamescope-session, Steam e o
+# alternador Game Mode <-> Desktop. Confirme o nome/tag da imagem em
+# https://github.com/ublue-os/bazzite antes do primeiro build.
+ARG BASE_IMAGE="ghcr.io/ublue-os/bazzite-deck"
+ARG BASE_TAG="stable"
+
+FROM scratch AS ctx
+COPY build_files /build_files
+COPY system_files /system_files
+
+FROM ${BASE_IMAGE}:${BASE_TAG}
+
+# Arquivos de sistema do Leo Linux (tema padrão, tmpfiles, skel)
+COPY system_files/ /
+
+RUN --mount=type=bind,from=ctx,source=/build_files,target=/ctx \
+    /ctx/build.sh && \
+    ostree container commit
+
+LABEL org.opencontainers.image.title="Leo Linux"
+LABEL org.opencontainers.image.description="Sistema Linux atômico para jogos, com tema estilo Aero e modo gamer"

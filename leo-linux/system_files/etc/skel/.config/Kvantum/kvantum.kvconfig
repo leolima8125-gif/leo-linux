@@ -1,0 +1,4 @@
+[General]
+# Troque pelo nome do tema Kvantum estilo Aero que você colocar em
+# ~/.config/Kvantum/ (ou /usr/share/Kvantum/). Veja theme/README.md
+theme=KvAdaptaDark
