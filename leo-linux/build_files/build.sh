@@ -42,6 +42,7 @@ chmod +x /usr/bin/leo-session /usr/bin/leo-gamemode-session \
 chmod +x /etc/skel/Desktop/*.desktop
 systemctl enable leo-session-switch.path
 
+
 ### 7. Limpeza
 dnf5 clean all
 rm -rf /var/cache/dnf /tmp/* || true

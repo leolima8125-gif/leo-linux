@@ -1,0 +1,36 @@
+name: Build ISO Leo Linux
+on:
+  workflow_dispatch:
+
+jobs:
+  iso:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Liberar espaço em disco
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
+
+      - name: Gerar ISO
+        id: iso
+        uses: jasonn3/build-container-installer@main
+        with:
+          arch: x86_64
+          image_name: leo-linux
+          image_repo: ghcr.io/leolima8125-gif
+          image_tag: stable
+          version: 45
+          variant: Kinoite
+          iso_name: leo-linux.iso
+
+      - name: Enviar ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: leo-linux-iso
+          path: ${{ steps.iso.outputs.iso_path }}
+          if-no-files-found: error
+          compression-level: 0

@@ -1,10 +1,11 @@
-name: Build Leo Linux
-on:
-  push:
-    branches: [main]
-  schedule:
-    - cron: "0 6 * * *"   # reconstrói diariamente para pegar kernel/Mesa novos da base
-  workflow_dispatch:
+- name: Build
+  id: build
+  uses: redhat-actions/buildah-build@v2
+  with:
+    context: ./leo-linux
+    containerfiles: ./leo-linux/Containerfile
+    image: ${{ env.IMAGE_NAME }}
+    tags: latest stable
 
 env:
   IMAGE_NAME: leo-linux
